@@ -1,18 +1,22 @@
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
 const __dirname = path.resolve();
 
 export default {
 	entry: {
-		'app-polyfill': ['@babel/polyfill', './src/js/app.js'],
-		app: './src/js/app.js'
+		// 'index-polyfill': ['@babel/polyfill', './src/js/index.js'],
+		index: './src/js/index.js'
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].bundle.js'
+		filename: '[name].bundle.js',
+		publicPath: '/dist'
 	},
 	plugins: [
-		new MiniCssExtractPlugin({ filename: 'css/style.css' })
+		new MiniCssExtractPlugin({ filename: 'dist/style.css' }),
+		new HtmlWebpackPlugin()
 	],
 	module: {
 		rules: [

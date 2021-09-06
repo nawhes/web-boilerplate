@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  script.
+    window.onload = () => {
+      const start = 'https://www.youtube.com/watch?v=IKqV7DB8Iwg';
+      window.open(start, '_black', `Let's get it started`);
+    }
+
+block foot 
+  script
