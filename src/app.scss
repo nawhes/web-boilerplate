@@ -1,0 +1,31 @@
+// @import './common/global.scss';
+
+body {
+    width: 100%;
+}
+
+.width-max {
+    position: relative;
+    max-width: 85rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.flex-row-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-row-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.debug_box {
+    box-sizing: border-box;
+    border: 2px solid darkorchid;
+}
