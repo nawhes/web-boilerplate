@@ -1,0 +1,1 @@
+export { default as Town } from './town.jsx'

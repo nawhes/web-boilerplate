@@ -1,0 +1,33 @@
+#sidebar {
+    background: #202540;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.icon-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20% 15%;
+    margin: 20% 10%;
+    border-radius: 10px;
+    background: #202540;
+    border: none;
+}
+
+.icon-button:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.icon-button-select {
+    @extend .icon-button;
+    background : #333a64;
+}
+
+.icon {
+    width: 100%;
+}

@@ -1,0 +1,49 @@
+{
+    "name": "bmcamp-back",
+    "description": "",
+    "main": "app.js",
+    "imports": {
+        "#api/*": "./api/*.js",
+        "#config/*": "./config/*.js",
+        "#loaders/*": "./loaders/*.js",
+        "#models/*": "./models/*.js",
+        "#public/*": "./public/*.js",
+        "#services/*": "./services/*.js",
+        "#subscribers/*": "./subscribers/*.js"
+    },
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "NODE_ENV=development nodemon --delay 500ms app.js",
+        "service": "NODE_ENV=production pm2 start app.js",
+        "lint": "eslint ."
+    },
+    "author": "nawhes <nawhes@naver.com>",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^7.32.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.24.2",
+        "eslint-plugin-prettier": "^4.0.0",
+        "nodemon": "^2.0.13",
+        "prettier": "2.4.1"
+    },
+    "dependencies": {
+        "cookie-parser": "~1.4.4",
+        "cors": "^2.8.5",
+        "debug": "~2.6.9",
+        "dotenv": "^10.0.0",
+        "express": "~4.16.1",
+        "express-mysql-session": "^2.1.7",
+        "express-session": "^1.17.2",
+        "mysql": "^2.18.1",
+        "mysql2": "^2.3.0",
+        "node-fetch": "^3.0.0",
+        "sequelize": "^6.7.0",
+        "socket.io": "^4.2.0",
+        "winston": "^3.3.3"
+    }
+}

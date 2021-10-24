@@ -1,0 +1,30 @@
+#home-wrap {
+    flex-direction: column;
+    width: 100%;
+    padding: 10%;
+    background: black;
+    color: #F87B08;
+    align-items: center;
+    font-weight: 900;
+    font-size: 30px;
+}
+
+#goTown {
+    text-align: center;
+    background: #F87B08;
+    padding: 1% 2%;
+    border-radius:25px; 
+    width: 10%;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.6;
+    }
+}
+
+#ghost {
+    width: 220px;
+    margin: 40px auto;
+}
