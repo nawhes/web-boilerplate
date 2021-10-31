@@ -1,1 +1,0 @@
-export { default as SidebarNav } from '@page/town/sidebarnav/sidebar-nav.jsx';
