@@ -1,18 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import { NotFound } from '@page/NotFound/NotFound';
-import NotFound from '@page/NotFound/NotFound';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 import './app.scss';
 
-const App = () => {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route component={NotFound} />
-            </Switch>
-        </BrowserRouter>
-    );
+interface Props {}
+
+const App = ({  }: Props) => {
+  return <h1>Hello World!</h1>;
 };
+
 ReactDOM.render(<App />, document.getElementById('app'));

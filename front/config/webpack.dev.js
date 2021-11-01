@@ -1,11 +1,8 @@
 import path from 'path';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import dotenv from 'dotenv-webpack';
+import DotenvWebpackPlugin from 'dotenv-webpack';
 import { merge } from 'webpack-merge';
 
 import common from './webpack.common.js';
-
-const __dirname = path.resolve();
 
 export default merge(common, {
 	mode: 'development',
@@ -13,19 +10,17 @@ export default merge(common, {
 	devServer: {
 		historyApiFallback: true,
 		compress: true,
-		static: path.resolve(__dirname, 'dist'),
+		static: path.resolve('./dist'),
 		headers: {
-			"Access-Control-Allow-Origin": "*",
-			"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-			"Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-		}
+			'Access-Control-Allow-Origin': '*',
+			'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+			'Access-Control-Allow-Headers':
+				'X-Requested-With, content-type, Authorization',
+		},
 	},
 	plugins: [
-		new MiniCssExtractPlugin({
-			filename: '[name].css'
+		new DotenvWebpackPlugin({
+			path: path.resolve('.env.dev'),
 		}),
-		new dotenv({
-			path: path.resolve(__dirname, '.env.dev')
-		})
 	],
-})
+});

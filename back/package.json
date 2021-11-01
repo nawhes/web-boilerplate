@@ -2,36 +2,56 @@
     "name": "bmcamp-back",
     "description": "",
     "main": "app.js",
-    "imports": {
-        "#api/*": "./api/*.js",
-        "#config/*": "./config/*.js",
-        "#loaders/*": "./loaders/*.js",
-        "#models/*": "./models/*.js",
-        "#public/*": "./public/*.js",
-        "#services/*": "./services/*.js",
-        "#subscribers/*": "./subscribers/*.js"
-    },
     "version": "0.0.0",
     "private": true,
-    "type": "module",
     "scripts": {
         "start": "node app.js",
         "dev": "NODE_ENV=development nodemon --delay 500ms app.js",
         "service": "NODE_ENV=production pm2 start app.js",
-        "lint": "eslint ."
+        "format": "prettier --check ./src",
+        "format:fix": "prettier --write ./src",
+        "lint": "eslint ./src",
+        "lint:fix": "eslint --fix ./src"
+    },
+    "lint-staged": {
+        "src/**/*.{ts,tsx}": [
+            "eslint --ext .tsx --ext .ts ./src --fix"
+        ],
+        "./src/**": [
+            "prettier --write ."
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
     },
     "author": "nawhes <nawhes@naver.com>",
     "license": "ISC",
     "devDependencies": {
+        "@types/express": "^4.17.13",
+        "@types/node": "^16.11.6",
+        "@types/react-router-dom": "^5.3.2",
+        "@typescript-eslint/eslint-plugin": "^4.33.0",
+        "@typescript-eslint/parser": "^4.33.0",
+        "cross-env": "^7.0.3",
         "eslint": "^7.32.0",
         "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-config-airbnb-typescript": "^14.0.1",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-import": "^2.24.2",
         "eslint-plugin-prettier": "^4.0.0",
+        "husky": "^7.0.4",
+        "husky-init": "^7.0.0",
+        "lint-staged": "^11.2.6",
         "nodemon": "^2.0.13",
-        "prettier": "2.4.1"
+        "prettier": "2.4.1",
+        "pretty-quick": "^3.1.1",
+        "typescript": "^4.4.4"
     },
     "dependencies": {
+        "@types/cookie-parser": "^1.4.2",
+        "@types/morgan": "^1.9.3",
         "cookie-parser": "~1.4.4",
         "cors": "^2.8.5",
         "debug": "~2.6.9",
@@ -39,11 +59,16 @@
         "express": "~4.16.1",
         "express-mysql-session": "^2.1.7",
         "express-session": "^1.17.2",
+        "morgan": "^1.10.0",
         "mysql": "^2.18.1",
         "mysql2": "^2.3.0",
         "node-fetch": "^3.0.0",
+        "pm2": "^5.1.2",
+        "reflect-metadata": "^0.1.13",
         "sequelize": "^6.7.0",
         "socket.io": "^4.2.0",
+        "ts-node": "^10.4.0",
+        "typeorm": "^0.2.38",
         "winston": "^3.3.3"
     }
 }

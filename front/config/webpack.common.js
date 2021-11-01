@@ -1,43 +1,35 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const __dirname = path.resolve();
-
 export default {
 	entry: {
-		// app: ['@babel/polyfill', './src/app.js'],
-		app: './src/app.jsx',
+		app: './src/app.tsx',
 	},
 	output: {
 		filename: '[name].bundle.js',
-		path: path.resolve(__dirname, 'dist/'),
+		path: path.resolve('dist'),
 		publicPath: '/',
-		clean: true
+		clean: true,
 	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, 'src/', 'index.html'),
-			filename: path.resolve(__dirname, 'dist/', 'index.html'),
-			chunks: ['app']
-		})
-	],
+	resolve: {
+		extensions: ['.wasm', '.ts', '.tsx', '.mjs', '.cjs', '.js', '.json'],
+		alias: {
+			'@src': path.resolve('src'),
+		},
+	},
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx)$/,
-				include: [
-					path.resolve(__dirname, 'src/')
-				],
+				test: /\.(js|jsx|ts|tsx)$/,
 				use: {
 					loader: 'babel-loader',
 				},
-				exclude: /node_modules/
+				exclude: /node_modules/,
 			},
 			{
 				test: /\.(scss|css)$/i,
-				exclude: /\.module\.css$/i,
 				use: ['style-loader', 'css-loader', 'sass-loader'],
-				exclude: /node_modules/
+				exclude: [/\.module\.css$/i, /node_modules/],
 			},
 			{
 				test: /\.module\.css$/i,
@@ -45,11 +37,11 @@ export default {
 					'style-loader',
 					{
 						loader: 'css-loader',
-						options: { modules: true }
+						options: { modules: true },
 					},
-					'sass-loader'
+					'sass-loader',
 				],
-				exclude: /node_modules/
+				exclude: /node_modules/,
 			},
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -58,18 +50,14 @@ export default {
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/i,
 				type: 'asset/resource',
-			}
+			},
 		],
 	},
-	resolve: {
-		alias: {
-			'@font': path.resolve(__dirname, 'src/font'),
-			'@common': path.resolve(__dirname, 'src/common'),
-			'@core': path.resolve(__dirname, 'src/core'),
-			'@component': path.resolve(__dirname, 'src/component'),
-			'@page': path.resolve(__dirname, 'src/page'),
-			'@tools': path.resolve(__dirname, 'src/tools'),
-			'@assets': path.resolve(__dirname, 'assets'),
-		},
-	}
-}
+	plugins: [
+		new HtmlWebpackPlugin({
+			template: path.resolve('src/index.html'),
+			filename: path.resolve('dist/index.html'),
+			chunks: ['app'],
+		}),
+	],
+};
