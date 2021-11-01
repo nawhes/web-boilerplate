@@ -1,4 +1,4 @@
 declare const test = 'test';
 declare namespace testSpace {
-    let name: string;
+	let name: string;
 }

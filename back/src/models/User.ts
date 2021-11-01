@@ -1,16 +1,13 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
 
 @Entity()
-export class User {
-    @PrimaryGeneratedColumn()
-    id: number;
+export default class User extends BaseEntity {
+	@PrimaryGeneratedColumn()
+	id: number;
 
-    @Column()
-    firstName: string;
+	@Column()
+	firstName: string;
 
-    @Column()
-    lastName: string;
-    constructor(_id:number, _firstName:string, _lastName:string) {
-        this.id = _id;
-    }
+	@Column()
+	lastName: string;
 }
